@@ -28,6 +28,7 @@
   height: 25px;
   background-color: darkslategray;
   border-radius: 5px;
+  color: white
 }
 
 .type-select{
@@ -36,10 +37,12 @@
   background-color: darkslategray;
   border-radius: 5px;
   margin: 10px 0 10px 0;
+  color: white
+
 }
 
 .title{
   text-shadow: 0px 5px 10px darkslategray;
   border-bottom: 1px solid rgba(47, 79, 79, 0.5);
-  margin: 0px 100px 20px 100px;
+  margin: 20px 15% 20px 15%;
 }
