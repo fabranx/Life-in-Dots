@@ -1,0 +1,57 @@
+.dot {
+  border: 1px solid black;
+  border-radius: 12%;
+}
+
+.dot-months {
+  width: 20px;
+  height: 20px;
+}
+
+.dot-years {
+  width: 50px;
+  height: 50px;
+}
+
+.dot-weeks {
+  width: 10px;
+  height: 10px;
+}
+
+.colored{
+  background-color: red;
+}
+
+@media screen and (max-width: 680px) {
+  .dot-months {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .dot-years {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .dot-weeks {
+    width: 5px;
+    height: 5px;
+  }
+}
+
+@media screen and (min-width: 680px) and (max-width: 900px) {
+  .dot-months {
+    width: 15px;
+    height: 15px;
+  }
+  
+  .dot-years {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .dot-weeks {
+    width: 10px;
+    height: 10px;
+  }
+}

@@ -1,0 +1,72 @@
+.dots-wrapper{
+  margin-top: 20px;
+  display: grid;
+  overflow-x: auto;
+  background-color: aliceblue;
+  border-radius: 10px;
+  padding: 15px;
+  justify-items: center;
+}
+
+
+.dots-years {
+  grid-template-columns: repeat(10, 1fr);
+  column-gap: 15px;
+  row-gap: 30px;
+}
+
+.dots-months {
+  grid-template-columns: repeat(36, 1fr);
+  column-gap: 2px;
+  row-gap: 10px;
+}
+
+.dots-weeks {
+  grid-template-columns: repeat(52, 1fr);
+  column-gap: 2px;
+  row-gap: 5px;  
+}
+
+@media screen and (max-width: 680px) {
+  .dots-wrapper{
+    padding: 0.5rem;
+  }
+  
+  
+  .dots-years {
+    column-gap: 5px;
+    row-gap: 10px;
+  }
+  
+  .dots-months {
+    column-gap: 1px;
+    row-gap: 2px;
+  }
+  
+  .dots-weeks {
+    column-gap: 0.5px;
+    row-gap: 1px;  
+  }
+  
+}
+
+@media screen and (min-width: 680px) and (max-width: 900px) {
+  .dots-wrapper{
+    padding: 0.5rem;
+  }
+  
+  .dots-years {
+    column-gap: 10px;
+    row-gap: 20px;
+  }
+  
+  .dots-months {
+    column-gap: 2px;
+    row-gap: 5px;
+  }
+  
+  .dots-weeks {
+    column-gap: 2px;
+    row-gap: 5px;  
+  }
+}
