@@ -8,6 +8,8 @@ In this web app, made with react, the user enters his or her date of birth and c
 
 You can display the deaths of some famous people in the grid to see whether you lived longer or shorter. 
 
+## Link: https://fab-lifeindots.netlify.app/
+
 ### Screens
 
 ![immagine](https://user-images.githubusercontent.com/107358529/232109845-e6e8b9c7-c7c4-405d-9875-ccfd2dbaf99b.png)
