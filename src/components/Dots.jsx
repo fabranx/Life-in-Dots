@@ -1,14 +1,16 @@
 import Dot from "./Dot"
 import './Dots.css'
 import { DateType } from "../dateType"
+import { livingTimes } from "../famousDeaths"
 
 const lifeExpectationYear = 90
 const lifeExpectationMonth = lifeExpectationYear * 12
 const lifeExpectationWeek =  lifeExpectationYear * 52
 
+
 function Dots({dotsRepresentation, numColoredDots}) {
 
-  let expectation = null
+  let expectation = 0
 
   switch (dotsRepresentation) {
     case DateType.YEARS:
@@ -24,19 +26,24 @@ function Dots({dotsRepresentation, numColoredDots}) {
       break;
 
     default:
-      expectation = null
       break;
   }
 
 
   return (
     <div className={`dots-wrapper dots-${dotsRepresentation}`}>
-      {[...Array(expectation)].map((_, i) =>
+      {[...Array(expectation)].map((_, i) => {
+        let filtLivingTimes = livingTimes.filter(obj => obj[dotsRepresentation] === i+1)
+        return (
         <Dot 
-          key={`${dotsRepresentation}-${i}`} 
+          key={`${dotsRepresentation}-${i}`}
+          index={i}
           dotsRepresentation={dotsRepresentation} 
           colored={i<numColoredDots ? true : false}
+          famousPersonsDeath={filtLivingTimes}
         />
+        ) 
+      }
       )}
     </div>
   )

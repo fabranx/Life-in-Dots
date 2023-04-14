@@ -1,20 +1,21 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import Dots from './components/Dots'
-import { DateType } from './dateType'
+import { DateType, DotsperLine } from './dateType'
+import { calculateMonths, calculateWeeks, calculateYears } from './calculator'
 
-const datenow = new Date(Date.now())
+const currentDate = new Date(Date.now())
 
 
 function App() {
-  const [date, setDate] = useState('')
+  const [birthDate, setBirthDate] = useState('')
   const [dotsRepresentation, setDotsRepresentation] = useState(DateType.YEARS)
   const [numColoredDots, setNumColoredDots] = useState(0)
 
 
   function onDateChange(e) {
     let selectedDate = new Date(e.target.value)
-    setDate(selectedDate)
+    setBirthDate(selectedDate)
   }
 
   function onRepresentationChange(e) {
@@ -22,32 +23,28 @@ function App() {
   }
   
   useEffect(() => {
-    if(date){
+    if(birthDate){
       switch (dotsRepresentation) {
         case DateType.YEARS:
-            let yearsDiff = datenow.getFullYear() - date.getFullYear()
-            setNumColoredDots(yearsDiff)
+            setNumColoredDots(calculateYears(birthDate, currentDate))
           break;
 
         case DateType.MONTHS:
-          let monthsDiff = (datenow.getFullYear() - date.getFullYear()) * 12 + (datenow.getMonth() - date.getMonth())
-          setNumColoredDots(monthsDiff)
+          setNumColoredDots(calculateMonths(birthDate, currentDate))
           break;
 
         case DateType.WEEKS:
-          let weeksDiff = Math.floor(Math.floor((datenow - date) / (1000 * 3600 * 24)) / 7)
-          setNumColoredDots(weeksDiff)
+          setNumColoredDots(calculateWeeks(birthDate, currentDate))
           break;
       
         default:
           break;
       }
     }
-
-  }, [date, dotsRepresentation])
+  }, [birthDate, dotsRepresentation])
 
   return (
-    <div className="App">
+    <div>
       <h1 className='title'>Your Life in Dots</h1>
       <div>
         <label>Date of Birth {' '}
@@ -62,6 +59,12 @@ function App() {
         </select>
       </label>
       <p>{numColoredDots} {dotsRepresentation}</p>
+      <p className='legend'>Legend: 1 row = {
+        dotsRepresentation === DateType.YEARS ? `${DotsperLine.YEARS} ${dotsRepresentation}` :
+        dotsRepresentation == DateType.MONTHS ? `${DotsperLine.MONTHS} ${dotsRepresentation} (${DotsperLine.MONTHS/12} years)` :
+        `${DotsperLine.WEEKS} ${dotsRepresentation} (${DotsperLine.WEEKS/52} year)` 
+        }
+      </p>
       <Dots dotsRepresentation={dotsRepresentation} numColoredDots={numColoredDots}/>
     </div>
   )

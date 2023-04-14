@@ -3,6 +3,44 @@
   border-radius: 12%;
 }
 
+.highlighted-dot{
+  border: 3px solid rgb(106, 13, 255);
+  border-radius: 12%;
+  cursor: pointer;
+  position: relative;
+}
+
+.highlighted-dot:active{
+  background-color: rgb(106, 13, 255);
+}
+
+.highlighted-dot::before{
+  content: attr(data-hover);
+  display: none;
+  width: 140px;
+  color: white;
+  background-color: black;
+  text-align: center;
+  position: absolute;
+  z-index: 1000;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 0.8rem;
+  top: 0;
+}
+
+.left.highlighted-dot::before{
+  left: 0;
+}
+.right.highlighted-dot::before{
+  right: 0;
+}
+
+.highlighted-dot:hover::before{
+  display: block;
+}
+
+
 .dot-months {
   width: 20px;
   height: 20px;
@@ -22,6 +60,7 @@
   background-color: red;
 }
 
+
 @media screen and (max-width: 680px) {
   .dot-months {
     width: 8px;
@@ -36,6 +75,10 @@
   .dot-weeks {
     width: 5px;
     height: 5px;
+  }
+
+  .highlighted-dot{
+    border: 2px solid rgb(106, 13, 255);
   }
 }
 
